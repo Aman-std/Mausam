@@ -1,0 +1,51 @@
+import { CommuteRoute } from '../types';
+
+export const DEMO_COMMUTE_ROUTE: CommuteRoute = {
+  id: 'route_home_college',
+  title: 'Daily Campus Transit',
+  from: 'Home (Sector 14)',
+  to: 'Engineering College Campus',
+  estimatedDelayMinutes: 20,
+  recommendation: 'Recommended: Leave 20 minutes earlier. Heavy squall line approaching transit corridor between 8:25 AM and 8:45 AM.',
+  stops: [
+    {
+      id: 'stop_1',
+      time: '8:00 AM',
+      label: 'Departure: Home',
+      locationName: 'Sector 14 Metro Station',
+      temp: 28,
+      rainProb: 15,
+      condition: 'Overcast & Humid',
+    },
+    {
+      id: 'stop_2',
+      time: '8:20 AM',
+      label: 'Midway: Ring Road Flyover',
+      locationName: 'Mayapuri Intersection',
+      temp: 26,
+      rainProb: 65,
+      condition: 'Sudden Rain Band Emerging',
+      warning: 'Puddling detected along underpass. Reduced visibility (2.1 km).',
+    },
+    {
+      id: 'stop_3',
+      time: '8:40 AM',
+      label: 'Corridor: Outer Ring Road',
+      locationName: 'Dhaula Kuan Enroute',
+      temp: 24,
+      rainProb: 88,
+      condition: 'Squall / Thunderstorm Possible',
+      warning: 'Surface gusts up to 55 km/h. High two-wheeler skid risk.',
+    },
+    {
+      id: 'stop_4',
+      time: '9:00 AM',
+      label: 'Destination: Campus Gate',
+      locationName: 'University North Gate',
+      temp: 23,
+      rainProb: 70,
+      condition: 'Continuous Downpour',
+      isDestination: true,
+    },
+  ],
+};

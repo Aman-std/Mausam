@@ -1,0 +1,60 @@
+import { PersonaProfile, InterestOption } from '../types';
+
+export const PERSONA_PROFILES: Record<string, PersonaProfile> = {
+  general: {
+    id: 'general',
+    label: 'Citizen / General',
+    tagline: 'Everyday Weather & Life Health',
+    icon: 'account',
+    badgeBg: 'bg-blue-100 dark:bg-blue-900',
+    badgeText: 'text-blue-800 dark:text-blue-200',
+    description: 'Designed for daily routines, school, errands, and general outdoor comfort.',
+    keyNeeds: ['Hourly Temperature', 'Air Quality (AQI)', 'UV & Sun Protection', '5-Day Forecast'],
+    defaultInterests: ['aqi', 'uv', 'rain', 'health'],
+  },
+  farmer: {
+    id: 'farmer',
+    label: 'Farmer / Annadata',
+    tagline: 'Agrometeorological & Crop Health',
+    icon: 'sprout',
+    badgeBg: 'bg-emerald-100 dark:bg-emerald-900',
+    badgeText: 'text-emerald-800 dark:text-emerald-200',
+    description: 'Prioritizes soil moisture, monsoon onset, spraying windows, and thunderstorm warnings.',
+    keyNeeds: ['Agromet Advisory (IMD Gramin Krishi)', 'Rain Accumulation', 'Wind Gusts for Spraying', 'Severe Storm Overrides'],
+    defaultInterests: ['farming', 'rain', 'wind', 'uv'],
+  },
+  commuter: {
+    id: 'commuter',
+    label: 'Urban Commuter',
+    tagline: 'Transit, Visibility & Road Safety',
+    icon: 'train-car',
+    badgeBg: 'bg-amber-100 dark:bg-amber-900',
+    badgeText: 'text-amber-800 dark:text-amber-200',
+    description: 'Focuses on route-level rain corridors, sudden waterlogging risk, and peak traffic hours.',
+    keyNeeds: ['Commute Weather Timeline', 'Rain Probability (Next 2 Hours)', 'Visibility & Fog', 'Sudden Cloudburst Warnings'],
+    defaultInterests: ['commute', 'rain', 'aqi', 'visibility'],
+  },
+  fisherman: {
+    id: 'fisherman',
+    label: 'Fisherman / Coastal',
+    tagline: 'Marine Safety & Sea State',
+    icon: 'sail-boat',
+    badgeBg: 'bg-cyan-100 dark:bg-cyan-900',
+    badgeText: 'text-cyan-800 dark:text-cyan-200',
+    description: 'Engineered for coastal communities, wave swell heights, wind velocity, and squall alerts.',
+    keyNeeds: ['Sea State & Wave Height', 'IMD Red Alert Squall Warnings', 'Tidal Information', 'Wind Direction & Force'],
+    defaultInterests: ['marine', 'wind', 'rain'],
+  },
+};
+
+export const INTEREST_OPTIONS: InterestOption[] = [
+  { id: 'rain', label: 'Rain & Precipitation', icon: 'weather-rainy', description: 'Real-time rainfall radar and hourly chances' },
+  { id: 'commute', label: 'Daily Commute Route', icon: 'car-clock', description: 'Weather along your travel corridor' },
+  { id: 'farming', label: 'Agromet & Crop Care', icon: 'seed', description: 'Gramin Krishi Mausam Seva advisories' },
+  { id: 'marine', label: 'Marine & Sea State', icon: 'waves', description: 'Wind speed, swell height & coastal warnings' },
+  { id: 'aqi', label: 'Air Quality (AQI)', icon: 'blur', description: 'PM2.5, PM10 & health guidance' },
+  { id: 'uv', label: 'UV Index & Sun Care', icon: 'weather-sunny-alert', description: 'Sun protection window and heat index' },
+  { id: 'wind', label: 'Wind & Gust Velocity', icon: 'weather-windy', description: 'Gale speeds, squalls & direction' },
+  { id: 'visibility', label: 'Visibility & Fog', icon: 'weather-fog', description: 'Roadway and runway visibility conditions' },
+  { id: 'health', label: 'Health & Allergies', icon: 'heart-pulse', description: 'Humidity stress, asthma risk & outdoor fitness' },
+];
