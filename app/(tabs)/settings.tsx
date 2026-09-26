@@ -59,13 +59,22 @@ export default function SettingsScreen() {
 
           <Text className="text-xs text-slate-300 mb-3 leading-relaxed">{profile.description}</Text>
 
-          <View className="flex-row flex-wrap gap-1.5 pt-2 border-t border-slate-700/50">
+          <View className="flex-row flex-wrap gap-1.5 pt-2 border-t border-slate-700/50 mb-3">
             {interests.map((intId) => (
               <View key={intId} className="bg-slate-900 px-2.5 py-1 rounded-md border border-slate-700">
                 <Text className="text-[10px] text-sky-300 font-mono capitalize">{intId}</Text>
               </View>
             ))}
           </View>
+
+          <TouchableOpacity
+            onPress={() => router.push('/auth/login')}
+            activeOpacity={0.8}
+            className="w-full bg-sky-500/10 hover:bg-sky-500/20 py-2 rounded-xl items-center border border-sky-400/30 flex-row justify-center space-x-1.5"
+          >
+            <MaterialCommunityIcons name="cloud-sync-outline" size={15} color="#38bdf8" />
+            <Text className="text-xs font-semibold text-sky-300">Sign In / Sync with Supabase</Text>
+          </TouchableOpacity>
         </View>
 
         {/* Accessibility Switches */}
