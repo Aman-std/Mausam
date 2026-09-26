@@ -5,15 +5,17 @@ import { Persona, Interest, UserProfile } from '../types';
 import { PERSONA_PROFILES } from '../data/personaProfiles';
 
 interface PersonaState extends UserProfile {
+  showInspector: boolean;
   setPersona: (persona: Persona) => void;
   setInterests: (interests: Interest[]) => void;
   toggleInterest: (interest: Interest) => void;
   setLocation: (location: string) => void;
   setOnboardingComplete: (val: boolean) => void;
+  toggleInspector: () => void;
   resetProfile: () => void;
 }
 
-const DEFAULT_PERSONA: Persona = 'general';
+const DEFAULT_PERSONA: Persona = 'commuter';
 
 export const usePersonaStore = create<PersonaState>()(
   persist(
@@ -26,12 +28,12 @@ export const usePersonaStore = create<PersonaState>()(
       largeText: false,
       highContrast: false,
       onboardingComplete: false,
+      showInspector: false, // Clean mode by default
 
       setPersona: (newPersona: Persona) => {
         const profile = PERSONA_PROFILES[newPersona];
         set({
           persona: newPersona,
-          // If interests haven't been customized, adopt persona's default interests
           interests: profile ? profile.defaultInterests : get().interests,
         });
       },
@@ -52,6 +54,9 @@ export const usePersonaStore = create<PersonaState>()(
       setOnboardingComplete: (onboardingComplete: boolean) =>
         set({ onboardingComplete }),
 
+      toggleInspector: () =>
+        set((state) => ({ showInspector: !state.showInspector })),
+
       resetProfile: () =>
         set({
           persona: DEFAULT_PERSONA,
@@ -62,6 +67,7 @@ export const usePersonaStore = create<PersonaState>()(
           largeText: false,
           highContrast: false,
           onboardingComplete: false,
+          showInspector: false,
         }),
     }),
     {

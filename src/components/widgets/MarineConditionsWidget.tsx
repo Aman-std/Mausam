@@ -17,34 +17,32 @@ export default function MarineConditionsWidget({ weather }: Props) {
       className={`rounded-2xl p-4 border shadow-sm ${
         isDanger
           ? 'bg-red-950/60 border-red-500/70'
-          : 'bg-cyan-950/50 border-cyan-500/60'
+          : 'bg-slate-800/80 border-slate-700/60'
       }`}
       accessibilityLabel={`Marine conditions: ${seaState}, wave height ${waveHeight}`}
     >
       <View className="flex-row items-center justify-between mb-2">
         <View className="flex-row items-center space-x-1.5">
-          <MaterialCommunityIcons name="waves" size={16} color={isDanger ? '#ef4444' : '#22d3ee'} />
+          <MaterialCommunityIcons name="waves" size={16} color={isDanger ? '#ef4444' : '#38bdf8'} />
           <Text
-            className={`text-xs font-bold uppercase tracking-wide ${
-              isDanger ? 'text-red-300' : 'text-cyan-300'
+            className={`text-xs font-semibold ${
+              isDanger ? 'text-red-300' : 'text-cyan-400'
             }`}
           >
-            Coastal & Deep Sea Bulletin
+            Coastal & Marine Sea State
           </Text>
         </View>
-        <View className={`px-2 py-0.5 rounded ${isDanger ? 'bg-red-600' : 'bg-cyan-600'}`}>
-          <Text className="text-[10px] font-bold text-white uppercase">
-            {isDanger ? 'Port Warning: Signal 8' : 'Sea State: Safe'}
-          </Text>
-        </View>
+        <Text className={`text-[10px] font-bold ${isDanger ? 'text-red-400' : 'text-slate-400'}`}>
+          {isDanger ? 'Port Warning: Signal 8' : 'State: Normal'}
+        </Text>
       </View>
 
-      <Text className="text-sm font-extrabold text-white mb-2">
-        {isDanger ? '🚨 Fishermen Warning: Total Sea Venturing Ban' : 'Standard Coastal Fishing Permitted'}
+      <Text className="text-sm font-bold text-white mb-2">
+        {isDanger ? 'Fishermen Warning: Total Sea Venturing Ban' : 'Standard Coastal Navigation Permitted'}
       </Text>
 
       {/* Metrics Row */}
-      <View className="flex-row items-center justify-between bg-black/40 p-2.5 rounded-xl border border-white/10 mb-3">
+      <View className="flex-row items-center justify-between bg-slate-900/80 p-2.5 rounded-xl border border-slate-700/50 mb-2.5">
         <View>
           <Text className="text-[10px] text-slate-400">Wave Swell Height</Text>
           <Text className="text-sm font-bold text-white">{waveHeight}</Text>
@@ -59,7 +57,7 @@ export default function MarineConditionsWidget({ weather }: Props) {
         </View>
       </View>
 
-      <Text className={`text-xs leading-snug ${isDanger ? 'text-red-200' : 'text-cyan-200'}`}>
+      <Text className={`text-xs leading-snug ${isDanger ? 'text-red-200' : 'text-slate-400'}`}>
         {isDanger
           ? 'Deep sea trawlers advised to return to nearest harbor immediately. Squally winds may capsize small motorized crafts.'
           : 'Normal fishing operations allowed along designated coastal grid up to 15 nautical miles.'}

@@ -4,40 +4,37 @@ import ScenarioBanner from '../../src/components/homepage/ScenarioBanner';
 import WidgetContainer from '../../src/components/homepage/WidgetContainer';
 import { useScoredWidgets } from '../../src/hooks/useWidgetScorer';
 import { useWeatherStore } from '../../src/store/weatherStore';
+import { usePersonaStore } from '../../src/store/personaStore';
 
 export default function HomeScreen() {
   const { widgets, activePersona, activeScenario } = useScoredWidgets();
   const weather = useWeatherStore((state) => state.weather);
+  const showInspector = usePersonaStore((state) => state.showInspector);
 
   return (
     <View className="flex-1 bg-slate-900">
-      {/* Top Header */}
+      {/* Sleek Government Header */}
       <HomeHeader />
 
       <ScrollView className="flex-1" contentContainerStyle={{ paddingBottom: 32 }}>
-        {/* Scenario Banner with Quick Switcher */}
+        {/* Subtle Alert & Scenario Status */}
         <ScenarioBanner />
 
-        {/* Algorithm Header Banner */}
-        <View className="flex-row items-center justify-between px-5 mb-2.5">
-          <View>
-            <Text className="text-xs font-extrabold uppercase tracking-wider text-slate-300">
-              Personalized Intelligence Feed
+        {/* Algorithm Inspector Indicator (Only visible when toggled on) */}
+        {showInspector && (
+          <View className="flex-row items-center justify-between px-5 my-2">
+            <Text className="text-[11px] font-semibold text-slate-400">
+              Scoring Model Active: <Text className="text-sky-400 capitalize">{activePersona}</Text> ·{' '}
+              <Text className="text-amber-400 capitalize">{activeScenario}</Text>
             </Text>
-            <Text className="text-[10px] text-slate-400">
-              Ranked dynamically for <Text className="text-sky-400 font-bold capitalize">{activePersona}</Text> in{' '}
-              <Text className="text-amber-400 font-bold capitalize">{activeScenario}</Text>
-            </Text>
+            <View className="bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700">
+              <Text className="text-[10px] font-mono text-slate-300">{widgets.length} Ranked</Text>
+            </View>
           </View>
-          <View className="bg-slate-800 px-2.5 py-1 rounded-full border border-slate-700">
-            <Text className="text-[10px] font-mono text-slate-300">
-              <Text className="text-sky-400 font-bold">{widgets.length}</Text> Widgets Scored
-            </Text>
-          </View>
-        </View>
+        )}
 
-        {/* Dynamic Ranked Widgets Grid */}
-        <View className="px-4">
+        {/* Clean Dynamic Widgets Grid */}
+        <View className="px-4 mt-1">
           {widgets.map((scoredItem, index) => (
             <WidgetContainer
               key={`${scoredItem.id}-${activePersona}-${activeScenario}`}
